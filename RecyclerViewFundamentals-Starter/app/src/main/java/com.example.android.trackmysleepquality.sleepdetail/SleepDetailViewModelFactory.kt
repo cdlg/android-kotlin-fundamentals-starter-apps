@@ -1,5 +1,5 @@
 /*
- * Copyright 2019, The Android Open Source Project
+ * Copyright 2018, The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,21 +14,27 @@
  * limitations under the License.
  */
 
-package com.example.android.trackmysleepquality.sleepquality
+package com.example.android.trackmysleepquality.sleepdetail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.trackmysleepquality.database.SleepDatabaseDao
 
-
-class SleepQualityViewModelFactory(
+/**
+ * This is pretty much boiler plate code for a ViewModel Factory.
+ *
+ * Provides the key for the night and the SleepDatabaseDao to the ViewModel.
+ */
+class SleepDetailViewModelFactory(
         private val sleepNightKey: Long,
-        private val dataSource: SleepDatabaseDao) : ViewModelProvider.Factory{
+        private val dataSource: SleepDatabaseDao) : ViewModelProvider.Factory {
     @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(SleepQualityViewModel::class.java)){
-            return SleepQualityViewModel(sleepNightKey, dataSource) as T
+        if (modelClass.isAssignableFrom(SleepDetailViewModel::class.java)) {
+            return SleepDetailViewModel(sleepNightKey, dataSource) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
 }
+
+ 
